@@ -1,0 +1,14 @@
+[project]
+name = "retry-budget-lib"
+version = "0.1.0"
+description = "Caps retries within a rolling window so callers sharing a budget compete for the same allowance."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
