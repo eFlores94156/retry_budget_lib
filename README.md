@@ -38,3 +38,10 @@ One awkward edge: `attempt_retry` is the recommended call because it checks and 
 - `record_retry() -> None` — record one retry; raises `BudgetExhausted` if over budget.
 - `attempt_retry() -> None` — atomically check and consume one unit of budget; raises `BudgetExhausted` if over.
 - `reset() -> None` — clear all recorded retries.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
